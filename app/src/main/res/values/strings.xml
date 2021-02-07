@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">StateFlowDataBindingExample</string>
+    <string name="load_my_friends_names">Load saved names</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="add_friend_hint">Add a friend</string>
+</resources>
