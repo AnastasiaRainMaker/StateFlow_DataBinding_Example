@@ -19,7 +19,7 @@ class MainViewModel constructor(private val repo: MainRepository) :
      * ether with data received in the case of success or an error message.
      */
     fun loadFriendsNames() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 repo.loadFriendsNames()
                     .combine(addedName) { listFromDataSource, addedName ->
@@ -29,6 +29,7 @@ class MainViewModel constructor(private val repo: MainRepository) :
                     }
                     .flowOn(Dispatchers.IO)
                     .collect {
+                        println("I'm working in thread ${Thread.currentThread().name}")
                         _names.value = it
                     }
             } catch (ex: Exception) {
